@@ -51,9 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = new Customer(
                 customerRegistrationRequest.name(),
                 customerRegistrationRequest.email(),
-                passwordEncoder.encode(customerRegistrationRequest.password()),
-                customerRegistrationRequest.age(),
-                customerRegistrationRequest.gender());
+                passwordEncoder.encode(customerRegistrationRequest.password()));
 
         customerRepository.save(customer);
     }
@@ -89,11 +87,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         if (updateRequest.name() != null && !updateRequest.name().equals(customer.getName())) {
             customer.setName(updateRequest.name());
-            changes = true;
-        }
-
-        if (updateRequest.age() != null && !updateRequest.age().equals(customer.getAge())) {
-            customer.setAge(updateRequest.age());
             changes = true;
         }
 
