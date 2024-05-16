@@ -1,7 +1,6 @@
 package com.example.reactroutes;
 
 import com.example.reactroutes.model.Customer;
-import com.example.reactroutes.model.Gender;
 import com.example.reactroutes.repository.CustomerRepository;
 import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
@@ -35,7 +34,6 @@ public class ReactRoutesApplication {
 		Name name = faker.name();
 		String firstName = name.firstName();
 		String lastName = name.lastName();
-		int age = random.nextInt(83) + 16;
 		String email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@email.com";
 		Customer customer = new Customer(
 				firstName + " " + lastName,

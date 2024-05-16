@@ -1,8 +1,5 @@
 package com.example.reactroutes.dto;
 
-
-import com.example.reactroutes.model.Gender;
-
 import java.util.List;
 
 public record CustomerDTO (
