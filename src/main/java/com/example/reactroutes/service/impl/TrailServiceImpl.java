@@ -5,7 +5,6 @@ import com.example.reactroutes.dto.TrailUpdateRequest;
 import com.example.reactroutes.model.Trail;
 import com.example.reactroutes.repository.TrailRepository;
 import com.example.reactroutes.service.TrailService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +15,9 @@ import java.util.Optional;
 public class TrailServiceImpl implements TrailService {
 
     public final TrailRepository trailRepository;
-    private ModelMapper mapper;
 
-    public TrailServiceImpl(TrailRepository trailRepository, ModelMapper mapper) {
+    public TrailServiceImpl(TrailRepository trailRepository) {
         this.trailRepository = trailRepository;
-        this.mapper = mapper;
     }
 
     @Override
@@ -35,7 +32,6 @@ public class TrailServiceImpl implements TrailService {
 
     @Override
     public void insertTrail(TrailRegistrationRequest request) {
-//        var trail = new Trail(request);
         var trail = new Trail();
         BeanUtils.copyProperties(request, trail);
         trailRepository.save(trail);
