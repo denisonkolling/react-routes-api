@@ -123,42 +123,43 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.updateProfileImageId(profileImageId, customerId);
     }
 
-//    @Override
-//    public void uploadCustomerProfileImage(Integer customerId, MultipartFile file) {
-//
-//        checkIfCustomerExistsOrThrow(customerId);
-//        String profileImageId = UUID.randomUUID().toString();
-//
-//        try {
-//            s3Service.putObject(s3Buckets.getCustomer(),
-//                    "profile-images/%s/%s".formatted(customerId, profileImageId),
-//                    file.getBytes());
-//        } catch (IOException e) {
-//            throw new RuntimeException("failed to upload profile image", e);
-//        }
-//
-//        customerRepository.updateProfileImageId(profileImageId, customerId);
-//
-//    }
+    //TODO: Implement customer profile image upload
+    //    @Override
+    //    public void uploadCustomerProfileImage(Integer customerId, MultipartFile file) {
+    //
+    //        checkIfCustomerExistsOrThrow(customerId);
+    //        String profileImageId = UUID.randomUUID().toString();
+    //
+    //        try {
+    //            s3Service.putObject(s3Buckets.getCustomer(),
+    //                    "profile-images/%s/%s".formatted(customerId, profileImageId),
+    //                    file.getBytes());
+    //        } catch (IOException e) {
+    //            throw new RuntimeException("failed to upload profile image", e);
+    //        }
+    //
+    //        customerRepository.updateProfileImageId(profileImageId, customerId);
+    //
+    //    }
 
-//    @Override
-//    public byte[] getCustomerProfileImage(Integer customerId) {
-//
-//        var customer = customerRepository.findById(customerId)
-//                .map(customerDTOMapper)
-//                .orElseThrow(() -> new ResourceNotFoundException("customer with id [%s] profile image not found".formatted(customerId)));
-//
-//        if (customer.profileImageId().isBlank()) {
-//            throw new ResourceNotFoundException("customer with id [%s] not found".formatted(customerId));
-//        }
-//
-//        byte[] profileImage = s3Service.getObject(
-//                s3Buckets.getCustomer(),
-//                "profile-images/%s/%s".formatted(customerId, customer.profileImageId())
-//        );
-//        return profileImage;
-//    }
-//
+    //    @Override
+    //    public byte[] getCustomerProfileImage(Integer customerId) {
+    //
+    //        var customer = customerRepository.findById(customerId)
+    //                .map(customerDTOMapper)
+    //                .orElseThrow(() -> new ResourceNotFoundException("customer with id [%s] profile image not found".formatted(customerId)));
+    //
+    //        if (customer.profileImageId().isBlank()) {
+    //            throw new ResourceNotFoundException("customer with id [%s] not found".formatted(customerId));
+    //        }
+    //
+    //        byte[] profileImage = s3Service.getObject(
+    //                s3Buckets.getCustomer(),
+    //                "profile-images/%s/%s".formatted(customerId, customer.profileImageId())
+    //        );
+    //        return profileImage;
+    //    }
+    //
     private void checkIfCustomerExistsOrThrow(Integer customerId) {
         if (!customerRepository.existsCustomerById(customerId)) {
             throw new ResourceNotFoundException(

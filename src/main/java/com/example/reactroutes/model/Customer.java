@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "customer", uniqueConstraints = {
+@Table(name = "tab_customer", uniqueConstraints = {
         @UniqueConstraint(name = "customer_email_unique", columnNames = "email"),
         @UniqueConstraint(name = "profile_image_id_unique", columnNames = "profileImageId")
 })
